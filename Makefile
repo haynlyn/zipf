@@ -1,10 +1,9 @@
-.PHONY : all clean settings
+.PHONY : all clean settings help
 
-COUNT=bin/countwords.py
-COLLATE=bin/collate.py
+include config.mk
+
 DATA=$(wildcard data/*.txt)
 RESULTS=$(patsubst data/%.txt,results/%.csv,$(DATA))
-PLOT=bin/plotcounts.py
 
 ## all : regenerate all results.
 all : results/collated.png
@@ -19,8 +18,13 @@ results/collated.csv : $(RESULTS) $(COLLATE)
 	python $(COLLATE) $(RESULTS) > $@
 
 ## results/%.csv : regenerate results for any book.
-results/%.csv : data/%.txt $(COUNT)
-	python $(COUNT) $< > $@
+results/%.csv : data/%.txt $(COUNT) $(SUMMARY)
+	@bash $(SUMMARY) $< Title
+	@bash $(SUMMARY) $< Author
+	python $(COUNT)  $< > $@
+
+## results : regenerate results for all books
+results : $(RESULTS)
 
 ## clean : remove all generated files.
 clean :
@@ -33,9 +37,9 @@ settings:
 	@echo RESULTS: $(RESULTS)
 	@echo COLLATE: $(COLLATE)
 	@echo PLOT: $(PLOT)
-
-
+	@echo SUMMARY: $(SUMMARY)
 
 ## help : show this message.
 help :
-	@grep '^##' ./Makefile
+	@grep -h -E '^##' ${MAKEFILE_LIST} | sed -e 's/## //g' \
+		| column -t -s ':'
