@@ -9,8 +9,8 @@ RESULTS=$(patsubst data/%.txt,results/%.csv,$(DATA))
 all : results/collated.png
 
 ## results/collated.png : plot the collated results.
-results/collated.png : results/collated.csv
-	python $(PLOT) $< --outfile $@
+results/collated.png : results/collated.csv $(PLOTPARAMS)
+	python $(PLOT) $< --outfile $@ --plotparams $(word 2,$^)
 
 ## results/collated.csv : collate all results.
 results/collated.csv : $(RESULTS) $(COLLATE)
