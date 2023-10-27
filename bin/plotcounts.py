@@ -8,6 +8,37 @@ import pandas as pd
 import matplotlib as mpl
 from scipy.optimize import minimize_scalar
 
+mpl_plot_styles=['Solarize_Light2',
+    '_classic_test_patch',
+    '_mpl-gallery',
+    '_mpl-gallery-nogrid',
+    'bmh',
+    'classic',
+    'dark_background',
+    'fast',
+    'fivethirtyeight',
+    'ggplot',
+    'grayscale',
+    'seaborn-v0_8',
+    'seaborn-v0_8-bright',
+    'seaborn-v0_8-colorblind',
+    'seaborn-v0_8-dark',
+    'seaborn-v0_8-dark-palette',
+    'seaborn-v0_8-darkgrid',
+    'seaborn-v0_8-deep',
+    'seaborn-v0_8-muted',
+    'seaborn-v0_8-notebook',
+    'seaborn-v0_8-paper',
+    'seaborn-v0_8-pastel',
+    'seaborn-v0_8-poster',
+    'seaborn-v0_8-talk',
+    'seaborn-v0_8-ticks',
+    'seaborn-v0_8-white',
+    'seaborn-v0_8-whitegrid',
+    'tableau-colorblind10']
+
+
+
 def nlog_likelihood(beta, counts):
     """Log-likelihood function."""
     likelihood = -np.sum(np.log((1/counts)**(beta - 1)
@@ -80,6 +111,7 @@ def main(args):
                                             method='max')
     ax = df.plot.scatter(x='word_frequency', y='rank',
                          figsize=[12,6], grid=True,
+                         style=args.style,
                          loglog=True,
                          xlim=args.xlim)
     word_counts = df['word_frequency'].to_numpy()
@@ -96,7 +128,12 @@ def main(args):
     curve_xmax = df['word_frequency'].max()
 
     plot_fit(curve_xmin, curve_xmax, max_rank, alpha, ax)
+    mpl.pyplot.style.use(args.style)
     ax.figure.savefig(args.outfile)
+
+    if args.saveconfig:
+        with open(args.saveconfig, 'w') as dumper:
+            yaml.dump(mpl.rcParams, dumper)
     
 
 if __name__ == '__main__':
@@ -112,6 +149,12 @@ if __name__ == '__main__':
                         default=None, help='X-axis bounds')
     parser.add_argument('--plotparams', type=str, default=None,
                         help='matplot lib paramters (YAML file)')
+    parser.add_argument('--style', type=str, default='classic',
+                        choices=mpl_plot_styles, nargs='*',
+                        help='select from pre-defined matplotlib styles')
+    parser.add_argument('--saveconfig', type=str, default=None,
+                        help='filename to save the configs')
     args = parser.parse_args()
+    print(args.saveconfig)
     main(args)
 

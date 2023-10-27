@@ -23,6 +23,11 @@ results/%.csv : data/%.txt $(COUNT) $(SUMMARY)
 	@bash $(SUMMARY) $< Author
 	python $(COUNT)  $< > $@
 
+## test-saveconfig : save plot configurations
+test-saveconfig : $(PLOT)
+	python $(PLOT) results/collated.csv --outfile results/collated.png \
+		--saveconfig
+
 ## results : regenerate results for all books
 results : $(RESULTS)
 
