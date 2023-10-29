@@ -6,6 +6,15 @@ import numpy as np
 import plotcounts
 import countwords
 
+def test_regression():
+    """Regression test for Dracula."""
+    with open('data/dracula.txt', 'r') as reader:
+        word_counts_dict = countwords.count_words(reader)
+    counts_array = np.array(list(word_counts_dict.values()))
+    actual_alpha = plotcounts.get_power_law_params(counts_array)
+    expected_alpha = pytest.approx(1.087, abs=0.001)
+    assert actual_alpha == expected_alpha
+
 def test_integration():
     """Test the full word count to alpha parameter workflow."""
     with open('test_data/random_words.txt', 'r') as reader:
