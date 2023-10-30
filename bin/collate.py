@@ -9,6 +9,12 @@ from collections import Counter
 
 import utilities as util
 
+import logging
+
+ERRORS = {
+    'not_csv_suffix' : '{fname}: File must end in .csv',
+    'config_corrupted' : '{config_name} corrupted',
+}
 
 def update_counts(reader, word_counts):
     """Update word coutns with data from another reader/file."""
@@ -19,8 +25,14 @@ def update_counts(reader, word_counts):
 def main(args):
     """Run the command line program."""
     word_counts = Counter()
+    logging.info('Processing files...')
     for fname in args.infiles:
+        logging.debug(f'Reading in {fname}...')
+        if not fname.endswith('.csv'):
+            msg = ERRORS['not_csv_suffix'].format(fname=fname)
+            riase OSError(msg)
         with open(fname, 'r') as reader:
+            logging.debug('Computing word counts...')
             update_counts(reader, word_counts)
     util.collection_to_csv(word_counts, num=args.num)
 
