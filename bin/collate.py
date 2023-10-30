@@ -30,7 +30,7 @@ def main(args):
         logging.debug(f'Reading in {fname}...')
         if not fname.endswith('.csv'):
             msg = ERRORS['not_csv_suffix'].format(fname=fname)
-            riase OSError(msg)
+            raise OSError(msg)
         with open(fname, 'r') as reader:
             logging.debug('Computing word counts...')
             update_counts(reader, word_counts)
@@ -41,6 +41,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('infiles', type=str, nargs='*', help='Input file names')
     parser.add_argument('-n', '--num', type=int, default=None, help='Output n most frequent words')
+    parser.add_argument('-v', '--verbose', action='store_true',
+                        help='If true, changes logging from `WARNING` to `DEBUG`')
     args = parser.parse_args()
+    if args.verbose:
+        logging.basicConfig(level=logging.DEBUG)
     main(args)
 
