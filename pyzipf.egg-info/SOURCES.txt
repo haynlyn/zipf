@@ -1,5 +1,5 @@
 LICENSE.md
-README.md
+README.rst
 setup.py
 pyzipf/collate.py
 pyzipf/countwords.py

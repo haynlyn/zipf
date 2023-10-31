@@ -9,4 +9,5 @@ before_script:
 test:
   script:
     - pip install -r requirements.txt
+    - pip install -e .
     - pytest
