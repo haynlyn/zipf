@@ -1,0 +1,4 @@
+[console_scripts]
+collate = pyzipf.collate:main
+countwords = pyzipf.countwords:main
+plotcounts = pyzipf.plotcounts:main

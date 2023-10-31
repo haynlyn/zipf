@@ -7,14 +7,10 @@ import csv
 import argparse
 from collections import Counter
 
-import utilities as util
+import pyzipf.utilities as util
 
 import logging
 
-ERRORS = {
-    'not_csv_suffix' : '{fname}: File must end in .csv',
-    'config_corrupted' : '{config_name} corrupted',
-}
 
 def update_counts(reader, word_counts):
     """Update word coutns with data from another reader/file."""
@@ -22,20 +18,34 @@ def update_counts(reader, word_counts):
         word_counts[word] += int(count)
 
 
+def process_file(fname, word_counts):
+    """Read file and update word counts"""
+    logging.debug(f'Reading in {fname}...')
+    if not fname.endswith('.csv'):
+        msg = util.ERRORS['not_csv_suffix'].format(fname=fname)
+        raise OSError(msg)
+    with open(fname, 'r') as reader:
+        logging.debug('Computing word counts...')
+        update_counts(reader, word_counts)
+    
+
 def main(args):
     """Run the command line program."""
     word_counts = Counter()
     logging.info('Processing files...')
     for fname in args.infiles:
-        logging.debug(f'Reading in {fname}...')
-        if not fname.endswith('.csv'):
-            msg = ERRORS['not_csv_suffix'].format(fname=fname)
-            raise OSError(msg)
-        with open(fname, 'r') as reader:
-            logging.debug('Computing word counts...')
-            update_counts(reader, word_counts)
+        try:
+            process_file(fname, word_counts)
+        except FileNotFoundError:
+            msg = util.ERRORS['file_not_found'].format(fname=fname)
+            logging.warning(FileNotFoundError(msg))
+        except PermissionError:
+            msg = util.ERRORS['permissions_problem'].format(fname=fname)
+            logging.warning(PermissionError(msg))
+        except Exception as e:
+            msg = f'{fname} not processed: {e}'
+            logging.error(Exception(msg))
     util.collection_to_csv(word_counts, num=args.num)
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
@@ -47,6 +57,6 @@ if __name__ == '__main__':
                         help='File to which to write logs')
     args = parser.parse_args()
     if args.verbose:
-        logging.basicConfig(level=logging.DEBUG, filename=args.logfile)
+        logging.basicConfig(level=logging.DEBUG, filename=args.logfile, filemode='w')
     main(args)
 

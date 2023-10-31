@@ -1,0 +1,15 @@
+LICENSE.md
+README.md
+setup.py
+pyzipf/collate.py
+pyzipf/countwords.py
+pyzipf/plotcounts.py
+pyzipf/script_template.py
+pyzipf/test_zipfs.py
+pyzipf/utilities.py
+pyzipf.egg-info/PKG-INFO
+pyzipf.egg-info/SOURCES.txt
+pyzipf.egg-info/dependency_links.txt
+pyzipf.egg-info/entry_points.txt
+pyzipf.egg-info/requires.txt
+pyzipf.egg-info/top_level.txt
