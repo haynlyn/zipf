@@ -3,8 +3,3 @@ Name: pyzipf
 Version: 0.1.0
 Author: Amira Khan
 License-File: LICENSE.md
-Requires-Dist: matplotlib
-Requires-Dist: pandas
-Requires-Dist: scipy
-Requires-Dist: pyyaml
-Requires-Dist: pytest
