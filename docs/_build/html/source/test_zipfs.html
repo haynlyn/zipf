@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>test_zipfs module &#8212; pyzipf 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-test_zipfs">
+<span id="test-zipfs-module"></span><h1>test_zipfs module<a class="headerlink" href="#module-test_zipfs" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="test_zipfs.test_alpha">
+<span class="sig-prename descclassname"><span class="pre">test_zipfs.</span></span><span class="sig-name descname"><span class="pre">test_alpha</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test_zipfs.test_alpha" title="Link to this definition">¶</a></dt>
+<dd><p>Test the calculation of the alpha parameter.</p>
+<dl class="simple">
+<dt>The test word counts satisfy the relationship,</dt><dd><p>r = cf**(-1/alpha), where
+r is the rank,
+f is the word count, and
+c is a constant of proportionality.</p>
+</dd>
+<dt>To generate test word counts for an expected alpha of</dt><dd><p>1.0, a maximum word frequency of 600 is used
+(i.e. c = 600 and r ranges from 1 to 600 inclusive)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test_zipfs.test_integration">
+<span class="sig-prename descclassname"><span class="pre">test_zipfs.</span></span><span class="sig-name descname"><span class="pre">test_integration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test_zipfs.test_integration" title="Link to this definition">¶</a></dt>
+<dd><p>Test the full word count to alpha parameter workflow.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test_zipfs.test_process_non_csv">
+<span class="sig-prename descclassname"><span class="pre">test_zipfs.</span></span><span class="sig-name descname"><span class="pre">test_process_non_csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test_zipfs.test_process_non_csv" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test_zipfs.test_process_not_found">
+<span class="sig-prename descclassname"><span class="pre">test_zipfs.</span></span><span class="sig-name descname"><span class="pre">test_process_not_found</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test_zipfs.test_process_not_found" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test_zipfs.test_regression">
+<span class="sig-prename descclassname"><span class="pre">test_zipfs.</span></span><span class="sig-name descname"><span class="pre">test_regression</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test_zipfs.test_regression" title="Link to this definition">¶</a></dt>
+<dd><p>Regression test for Dracula.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="test_zipfs.test_word_count">
+<span class="sig-prename descclassname"><span class="pre">test_zipfs.</span></span><span class="sig-name descname"><span class="pre">test_word_count</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test_zipfs.test_word_count" title="Link to this definition">¶</a></dt>
+<dd><p>Test the counting of words.</p>
+<p>The example poem is Risk, by Anais Nin.</p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">pyzipf</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Dan Khan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/source/test_zipfs.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

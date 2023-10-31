@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>plotcounts module &#8212; pyzipf 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-plotcounts">
+<span id="plotcounts-module"></span><h1>plotcounts module<a class="headerlink" href="#module-plotcounts" title="Link to this heading">¶</a></h1>
+<p>Plot word counts.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="plotcounts.get_power_law_params">
+<span class="sig-prename descclassname"><span class="pre">plotcounts.</span></span><span class="sig-name descname"><span class="pre">get_power_law_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word_counts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotcounts.get_power_law_params" title="Link to this definition">¶</a></dt>
+<dd><p>Get the power law parameters.</p>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>Moreno-Sanchez et al (2016) define alpha (Eq. 1),</dt><dd><p>beta (Eq. 2) and the maximum likelihood estimation (mle)
+of beta (Eq. 6).</p>
+</dd>
+<dt>Moreno-Sanchez I, Font-Clos F, Corral A (2016)</dt><dd><p>Large-Scale Analysis of Zipf’s Law in English Texts.
+PLoS ONE 11(1): e0147073.
+<a class="reference external" href="https://doi.org/10.1371/journal.pone/0147073">https://doi.org/10.1371/journal.pone/0147073</a></p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="plotcounts.main">
+<span class="sig-prename descclassname"><span class="pre">plotcounts.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotcounts.main" title="Link to this definition">¶</a></dt>
+<dd><p>Run the program.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="plotcounts.nlog_likelihood">
+<span class="sig-prename descclassname"><span class="pre">plotcounts.</span></span><span class="sig-name descname"><span class="pre">nlog_likelihood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotcounts.nlog_likelihood" title="Link to this definition">¶</a></dt>
+<dd><p>Log-likelihood function.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="plotcounts.plot_fit">
+<span class="sig-prename descclassname"><span class="pre">plotcounts.</span></span><span class="sig-name descname"><span class="pre">plot_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curve_xmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curve_xmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_rank</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotcounts.plot_fit" title="Link to this definition">¶</a></dt>
+<dd><p>Plot the power law curve that was fitted to the data.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>curve_xmin<span class="classifier">float</span></dt><dd><p>Minimum x-bound for fitted curve</p>
+</dd>
+<dt>curve_xmax<span class="classifier">float</span></dt><dd><p>Maximum x-bound for fitted curve</p>
+</dd>
+<dt>max_rank<span class="classifier">int</span></dt><dd><p>Maximum word frequency rank.</p>
+</dd>
+<dt>alpha<span class="classifier">float</span></dt><dd><p>Estimated alpha parameter for the power law.</p>
+</dd>
+<dt>ax<span class="classifier">matplotlib axes</span></dt><dd><p>Scatter plot to which the power curve will be added.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="plotcounts.set_plot_params">
+<span class="sig-prename descclassname"><span class="pre">plotcounts.</span></span><span class="sig-name descname"><span class="pre">set_plot_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#plotcounts.set_plot_params" title="Link to this definition">¶</a></dt>
+<dd><p>Set the matplotlib parameters.</p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">pyzipf</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Dan Khan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/source/plotcounts.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
