@@ -5,6 +5,17 @@ import numpy as np
 
 import plotcounts
 import countwords
+import collate
+
+def test_process_non_csv():
+    fname = 'filename_with_wrong_extens.ion'
+    with pytest.raises(OSError):
+        actual_result = collate.process_file(fname, Counter())
+
+def test_process_not_found():
+    fname = 'fake_file.csv'
+    with pytest.raises(FileNotFoundError):
+        actual_result = collate.process_file(fname, Counter())
 
 def test_regression():
     """Regression test for Dracula."""

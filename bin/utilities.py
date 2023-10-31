@@ -20,3 +20,10 @@ def collection_to_csv(collection, num=None):
         num = len(collection)
     writer = csv.writer(sys.stdout)
     writer.writerows(collection[:num])
+
+ERRORS = {
+    'not_csv_suffix' : '{fname}: File must end in .csv',
+    'config_corrupted': '{config_name} corrupted',
+    'file_not_found' : '{fname}: File not found',
+    'permissions_problem' : 'Problem with permissions'
+}
