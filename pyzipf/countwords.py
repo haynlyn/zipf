@@ -22,7 +22,6 @@ except:
             import utilities as util
         except:
             logging.error("Nothing was imported. Exiting.")
-            return -1
             
 
 def parse_command_line():
