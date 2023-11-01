@@ -19,5 +19,6 @@ setup(
             'collate = pyzipf.collate:main',
             'plotcounts = pyzipf.plotcounts:main'
         ]
-    }
+    },
+    description='A Python package for word count analysis.'
 )
